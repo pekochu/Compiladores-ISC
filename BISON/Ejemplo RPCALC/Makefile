@@ -1,6 +1,3 @@
-run: rpcalc
-	./rpcalc
-
 rpcalc: rpcalc.tab.o lex.yy.o
 	gcc rpcalc.tab.o lex.yy.o -o rpcalc -ly -ll -lm
 rpcalc.tab.c:
