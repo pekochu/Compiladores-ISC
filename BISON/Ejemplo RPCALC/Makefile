@@ -1,31 +1,15 @@
-lexlib=l
-yacclib=y
-bindir=.
-rm=/bin/rm -f
-mv=/bin/mv -f
-targets=simple-expr simple-varexpr
-cpptargets=usingcpp
+run: rpcalc
+	./rpcalc
 
-all: $(targets) $(cpptargets)
-
-$(targets): %: %.y
-	@echo "compiling yacc file:" $<
-	@echo "output file:" $@
-	bison -o$@.tab.c -d $<
-	flex -o$@.lex.c $@.lex
-	gcc -w -o $(bindir)/$@ $@.tab.c $@.lex.c -l$(yacclib) -l$(lexlib)
-	$(rm) $@.tab.c $@.tab.h $@.lex.c
-
-$(cpptargets): %: %.y
-	@echo "compiling cpp yacc file:" $<
-	@echo "output file:" $@
-	bison -b $@ -d $<
-	$(mv) $@.tab.c $@.tab.cc
-	flex -o$@.lex.cc $@.lex
-	g++ -w -o $(bindir)/$@ $@.tab.cc $@.lex.cc -l$(yacclib) -l$(lexlib)
-	$(rm) $@.tab.h $@.tab.cc $@.lex.cc
-
+rpcalc: lex.yy.c rpcalc.tab.c
+	gcc lex.yy.c rpcalc.tab.c -o rpcalc -ly -ll -lm
+rpcalc.tab.c:
+	bison -d rpcalc.y
+lex.yy.c:
+	flex rpcalc.l
 clean:
-	$(rm) $(targets) $(cpptargets)
-	$(rm) *.tab.h *.tab.c *.lex.c
-	$(rm) *.pyc
+	rm lex.yy.c
+	rm rpcalc.tab.c
+	rm rpcalc.tab.h
+	rm rpcalc
+	clear 
