@@ -1,10 +1,10 @@
 rpcalc: rpcalc.tab.o lex.yy.o
 	gcc rpcalc.tab.o lex.yy.o -o rpcalc -ly -ll -lm
 
-rpcalc.tab.o:
+rpcalc.tab.o: rpcalc.tab.c
 	gcc rpcalc.tab.c -c
 
-lex.yy.o:
+lex.yy.o: lex.yy.c
 	gcc lex.yy.c -c
 
 rpcalc.tab.c:
