@@ -1,8 +1,8 @@
 run: rpcalc
 	./rpcalc
 
-rpcalc: lex.yy.c rpcalc.tab.c
-	gcc lex.yy.c rpcalc.tab.c -o rpcalc -ly -ll -lm
+rpcalc: rpcalc.tab.o lex.yy.o
+	gcc rpcalc.tab.o lex.yy.o -o rpcalc -ly -ll -lm
 rpcalc.tab.c:
 	bison -d rpcalc.y
 lex.yy.c:
