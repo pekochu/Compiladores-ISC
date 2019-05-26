@@ -1,2 +1,2 @@
 # Compiladores-ISC
-Prácticas de Compiladores
+Prácticas de Compiladores. Semestre 20192. ESCOM - IPN.
