@@ -1,0 +1,14 @@
+digraph AFD{
+	/* Preambulo */
+	rankdir = LR
+	node [shape = circle];
+	/* Atributos de nodos */
+	temp [style = "invis"];
+	C [shape = doublecircle];
+	/* Transiciones */
+	A -> B [label = "&epsilon;"];
+	B -> C;
+	A -> A;
+	temp -> A [label = "Inicial"]
+	
+}

@@ -1,0 +1,43 @@
+@import url('styles.bundle.css');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+body{
+	font-family: "Courier New", sans-serif;
+}
+
+a{
+	color:inherit;
+	font-weight: bold;
+}
+
+.id{
+	color:#4CAF50;
+}
+
+.cte{
+	color:#03A9F4;
+}
+
+.reser_w{
+	color:#673AB7;
+}
+
+.operadores{
+	color:#3F51B5;
+}
+
+.numeros{
+	color:#E65100;
+}
+
+.special{
+	color:#009688;
+}
+
+.scape{
+	color:#E91E63;
+}
+
+.comment{
+	color:#9E9E9E;
+}
