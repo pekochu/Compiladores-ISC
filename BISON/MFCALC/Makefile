@@ -1,21 +1,23 @@
-rpcalc: rpcalc.tab.o lex.yy.o
-	gcc rpcalc.tab.o lex.yy.o -o rpcalc -ly -ll -lm
+mfcalc: mfcalc.tab.o lex.yy.o
+	gcc mfcalc.tab.o lex.yy.o -o mfcalc -ly -ll -lm
 
-rpcalc.tab.o: rpcalc.tab.c
-	gcc rpcalc.tab.c -c
+mfcalc.tab.o: mfcalc.tab.c
+	gcc mfcalc.tab.c -c
 
 lex.yy.o: lex.yy.c
 	gcc lex.yy.c -c
 
-rpcalc.tab.c:
-	bison -d rpcalc.y
+mfcalc.tab.c:
+	bison -d mfcalc.y
 
 lex.yy.c:
-	flex rpcalc.l
+	flex mfcalc.l
 
 clean:
 	rm lex.yy.c
-	rm rpcalc.tab.c
-	rm rpcalc.tab.h
-	rm rpcalc
+	rm mfcalc.tab.c
+	rm mfcalc.tab.h
+	rm mfcalc.tab.o
+	rm lex.yy.o
+	rm mfcalc
 	clear 

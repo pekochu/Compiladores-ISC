@@ -17,5 +17,7 @@ clean:
 	rm lex.yy.c
 	rm rpcalc.tab.c
 	rm rpcalc.tab.h
+	rm rpcalc.tab.o
+	rm lex.yy.o
 	rm rpcalc
 	clear 
