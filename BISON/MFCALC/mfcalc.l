@@ -7,7 +7,7 @@
      * gcc rpcalc.tab.o lex.yy.o -ll -lm
      */
     #include <stdlib.h>
-    #include "rpcalc.tab.h"
+    #include "mfcalc.tab.h"
 %}
 
 
