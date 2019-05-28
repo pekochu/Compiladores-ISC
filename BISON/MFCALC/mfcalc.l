@@ -1,19 +1,43 @@
 
 %{
     /* Libreria que incluye la función atof() */
-    /*
-     * flex rpcalc.l
-     * gcc lex.yy.c -c
-     * gcc rpcalc.tab.o lex.yy.o -ll -lm
-     */
     #include <stdlib.h>
+    /* Librería BISON */
     #include "mfcalc.tab.h"
 %}
 
+%option noyywrap
+
+digit   [0-9]
+posint  {digit}+
+int     "-"?{posint}
+long    {int}(""|("."{posint}))
+
+char    [a-zA-z]
+all     [[:alnum:][:blank:]]
+ls      `\x5b'
+rs      `\x5d'
+
 
 %% 
-[0-9]+"."[0-9]* { yylval = atof(yytext); return NUM; }
-[ ]
-\n { return '\n'; }
-[-*+n/^] {return *yytext; }
+{long}         { yylval.val.value.num = atof (yytext); return NUM; }
+"+"            { yylval.sym = yytext[0]; return PLUS; }
+"-"            { yylval.sym = yytext[0]; return MINUS; }
+"*"            { yylval.sym = yytext[0]; return TIMES; }
+"/"            { yylval.sym = yytext[0]; return OVER; }
+"^"            { yylval.sym = yytext[0]; return TO; }
+"="            { yylval.sym = yytext[0]; return EQ; }
+'{all}*'       { strcpy(yylval.val.value.str, yytext); return STR; }
+\"{all}*\"     { strcpy(yylval.val.value.str, yytext); return STR; }
+{char}+        { symrec *sym = getsym (yytext); if (sym==0) sym = putsym(yytext, VAR) ; yylval.tptr = sym; return sym->type; }
+{ls}           { return LS; }
+{rs}           { return RS; }
+"("            { return LP; }
+")"            { return RP; }
+"{"            { return LB; }
+"}"            { return RB; }
+","            { return COMMA; }
+":"            { return COLON; }
+[ \t]+         { }
+"\n"           { return STOP; }
 %%
