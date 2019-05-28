@@ -4,6 +4,7 @@
     #include <stdlib.h>
     /* Librería BISON */
     #include "mfcalc.tab.h"
+    #include "calc.h"   /* Contains definition of 'symrec'.  */
 %}
 
 %option noyywrap
