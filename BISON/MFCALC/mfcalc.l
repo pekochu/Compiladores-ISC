@@ -3,8 +3,8 @@
     /* Libreria que incluye la función atof() */
     #include <stdlib.h>
     /* Librería BISON */
+    #include "calc.h"
     #include "mfcalc.tab.h"
-    #include "calc.h"   /* Contains definition of 'symrec'.  */
 %}
 
 %option noyywrap
@@ -18,9 +18,16 @@ char    [a-zA-z]
 
 
 %% 
-{long}          { yylval.val.value.num = atof (yytext); return NUM; }
-[=-*+n/^]       {return *yytext; }
-{char}+         { symrec *sym = getsym (yytext); if (sym==0) sym = putsym(yytext, VAR) ; yylval.tptr = sym; return sym->type; }
+{long}          { yylval.NUM = atof (yytext); return NUM; }
+{char}+         { symrec *sym = getsym (yytext); if (sym==0) sym = putsym(yytext, VAR) ; yylval.VAR = sym; return sym->type; }
+"+"             { yylval.VAR = yytext[0]; return *yytext; }
+"-"             { yylval.VAR = yytext[0]; return *yytext; }
+"*"             { yylval.VAR = yytext[0]; return *yytext; }
+"/"             { yylval.VAR = yytext[0]; return *yytext; }
+"^"             { yylval.VAR = yytext[0]; return *yytext; }
+"="             { yylval.VAR = yytext[0]; return *yytext; }
+"("             { return *yytext; }
+")"             { return *yytext; }
 [ \t]+          { }
 "\n"            { return '\n'; }
 %%
