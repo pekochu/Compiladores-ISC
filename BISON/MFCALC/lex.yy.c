@@ -365,9 +365,9 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[23] =
     {   0,
-        0,    0,   14,   13,   11,   12,    9,   10,    5,    3,
-        4,    6,    1,    8,    2,    2,   11,    1,    0,    2,
-        1,    0
+        0,    0,   14,   13,   11,   12,    9,   10,    6,    4,
+        5,    7,    2,    8,    3,    1,   11,    2,    0,    3,
+        2,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -741,42 +741,42 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 21 "mfcalc.l"
-{ yylval.NUM = atof (yytext); return NUM; }
+{ return *yytext; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
 #line 22 "mfcalc.l"
-{ symrec *sym = getsym (yytext); if (sym==0) sym = putsym(yytext, VAR) ; yylval.VAR = sym; return sym->type; }
+{ yylval.NUM = atof (yytext); return NUM; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 23 "mfcalc.l"
-{ yylval.VAR = yytext[0]; return *yytext; }
+{ symrec *sym = getsym (yytext); if (sym==0) sym = putsym(yytext, VAR) ; yylval.VAR = sym; return sym->type; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 24 "mfcalc.l"
-{ yylval.VAR = yytext[0]; return *yytext; }
+{ return *yytext; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 25 "mfcalc.l"
-{ yylval.VAR = yytext[0]; return *yytext; }
+{ return *yytext; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 26 "mfcalc.l"
-{ yylval.VAR = yytext[0]; return *yytext; }
+{ return *yytext; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 27 "mfcalc.l"
-{ yylval.VAR = yytext[0]; return *yytext; }
+{ return *yytext; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 28 "mfcalc.l"
-{ yylval.VAR = yytext[0]; return *yytext; }
+{ return *yytext; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP

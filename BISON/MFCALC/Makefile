@@ -1,11 +1,14 @@
-mfcalc: mfcalc.tab.o lex.yy.o
-	gcc mfcalc.tab.o lex.yy.o -o mfcalc -ly -ll -lm
+mfcalc: mfcalc.tab.o lex.yy.o calc.o
+	gcc mfcalc.tab.o lex.yy.o calc.o -o mfcalc -ly -ll -lm
+
+calc.o: 
+	gcc -c -g calc.c
 
 mfcalc.tab.o: mfcalc.tab.c
-	gcc mfcalc.tab.c -c
+	gcc -c -g mfcalc.tab.c
 
 lex.yy.o: lex.yy.c
-	gcc lex.yy.c -c
+	gcc -c -g lex.yy.c
 
 mfcalc.tab.c:
 	bison -d mfcalc.y
@@ -19,5 +22,7 @@ clean:
 	rm mfcalc.tab.h
 	rm mfcalc.tab.o
 	rm lex.yy.o
+	rm calc.o
+	rm mfcalc.output
 	rm mfcalc
 	clear 

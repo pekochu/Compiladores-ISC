@@ -18,14 +18,14 @@ char    [a-zA-z]
 
 
 %% 
+"^"             { return *yytext; }
 {long}          { yylval.NUM = atof (yytext); return NUM; }
 {char}+         { symrec *sym = getsym (yytext); if (sym==0) sym = putsym(yytext, VAR) ; yylval.VAR = sym; return sym->type; }
-"+"             { yylval.VAR = yytext[0]; return *yytext; }
-"-"             { yylval.VAR = yytext[0]; return *yytext; }
-"*"             { yylval.VAR = yytext[0]; return *yytext; }
-"/"             { yylval.VAR = yytext[0]; return *yytext; }
-"^"             { yylval.VAR = yytext[0]; return *yytext; }
-"="             { yylval.VAR = yytext[0]; return *yytext; }
+"+"             { return *yytext; }
+"-"             { return *yytext; }
+"*"             { return *yytext; }
+"/"             { return *yytext; }
+"="             { return *yytext; }
 "("             { return *yytext; }
 ")"             { return *yytext; }
 [ \t]+          { }
