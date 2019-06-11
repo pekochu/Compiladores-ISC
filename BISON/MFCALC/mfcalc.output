@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Grammar
 
     0 $accept: input $end
@@ -433,3 +434,440 @@ State 31
     9 exp: FNCT '(' exp ')' .
 
     $default  reduce using rule 9 (exp)
+=======
+Gramática
+
+    0 $accept: input $end
+
+    1 input: %empty
+    2      | input line
+
+    3 line: '\n'
+    4     | exp '\n'
+    5     | error '\n'
+
+    6 exp: NUM
+    7    | VAR
+    8    | VAR '=' exp
+    9    | FNCT '(' exp ')'
+   10    | exp '+' exp
+   11    | exp '-' exp
+   12    | exp '*' exp
+   13    | exp '/' exp
+   14    | '-' exp
+   15    | exp '^' exp
+   16    | '(' exp ')'
+
+
+Terminales con las reglas donde aparecen
+
+$end (0) 0
+'\n' (10) 3 4 5
+'(' (40) 9 16
+')' (41) 9 16
+'*' (42) 12
+'+' (43) 10
+'-' (45) 11 14
+'/' (47) 13
+'=' (61) 8
+'^' (94) 15
+error (256) 5
+NUM (258) 6
+VAR (259) 7 8
+FNCT (260) 9
+NEG (261)
+
+
+No terminales con las reglas donde aparecen
+
+$accept (16)
+    en la izquierda: 0
+input (17)
+    en la izquierda: 1 2, en la derecha: 0 2
+line (18)
+    en la izquierda: 3 4 5, en la derecha: 2
+exp (19)
+    en la izquierda: 6 7 8 9 10 11 12 13 14 15 16, en la derecha: 4
+    8 9 10 11 12 13 14 15 16
+
+
+Estado 0
+
+    0 $accept: . input $end
+
+    $default  reduce usando la regla 1 (input)
+
+    input  ir al estado 1
+
+
+Estado 1
+
+    0 $accept: input . $end
+    2 input: input . line
+
+    $end   desplazar e ir al estado 2
+    error  desplazar e ir al estado 3
+    NUM    desplazar e ir al estado 4
+    VAR    desplazar e ir al estado 5
+    FNCT   desplazar e ir al estado 6
+    '-'    desplazar e ir al estado 7
+    '\n'   desplazar e ir al estado 8
+    '('    desplazar e ir al estado 9
+
+    line  ir al estado 10
+    exp   ir al estado 11
+
+
+Estado 2
+
+    0 $accept: input $end .
+
+    $default  aceptar
+
+
+Estado 3
+
+    5 line: error . '\n'
+
+    '\n'  desplazar e ir al estado 12
+
+
+Estado 4
+
+    6 exp: NUM .
+
+    $default  reduce usando la regla 6 (exp)
+
+
+Estado 5
+
+    7 exp: VAR .
+    8    | VAR . '=' exp
+
+    '='  desplazar e ir al estado 13
+
+    $default  reduce usando la regla 7 (exp)
+
+
+Estado 6
+
+    9 exp: FNCT . '(' exp ')'
+
+    '('  desplazar e ir al estado 14
+
+
+Estado 7
+
+   14 exp: '-' . exp
+
+    NUM   desplazar e ir al estado 4
+    VAR   desplazar e ir al estado 5
+    FNCT  desplazar e ir al estado 6
+    '-'   desplazar e ir al estado 7
+    '('   desplazar e ir al estado 9
+
+    exp  ir al estado 15
+
+
+Estado 8
+
+    3 line: '\n' .
+
+    $default  reduce usando la regla 3 (line)
+
+
+Estado 9
+
+   16 exp: '(' . exp ')'
+
+    NUM   desplazar e ir al estado 4
+    VAR   desplazar e ir al estado 5
+    FNCT  desplazar e ir al estado 6
+    '-'   desplazar e ir al estado 7
+    '('   desplazar e ir al estado 9
+
+    exp  ir al estado 16
+
+
+Estado 10
+
+    2 input: input line .
+
+    $default  reduce usando la regla 2 (input)
+
+
+Estado 11
+
+    4 line: exp . '\n'
+   10 exp: exp . '+' exp
+   11    | exp . '-' exp
+   12    | exp . '*' exp
+   13    | exp . '/' exp
+   15    | exp . '^' exp
+
+    '-'   desplazar e ir al estado 17
+    '+'   desplazar e ir al estado 18
+    '*'   desplazar e ir al estado 19
+    '/'   desplazar e ir al estado 20
+    '^'   desplazar e ir al estado 21
+    '\n'  desplazar e ir al estado 22
+
+
+Estado 12
+
+    5 line: error '\n' .
+
+    $default  reduce usando la regla 5 (line)
+
+
+Estado 13
+
+    8 exp: VAR '=' . exp
+
+    NUM   desplazar e ir al estado 4
+    VAR   desplazar e ir al estado 5
+    FNCT  desplazar e ir al estado 6
+    '-'   desplazar e ir al estado 7
+    '('   desplazar e ir al estado 9
+
+    exp  ir al estado 23
+
+
+Estado 14
+
+    9 exp: FNCT '(' . exp ')'
+
+    NUM   desplazar e ir al estado 4
+    VAR   desplazar e ir al estado 5
+    FNCT  desplazar e ir al estado 6
+    '-'   desplazar e ir al estado 7
+    '('   desplazar e ir al estado 9
+
+    exp  ir al estado 24
+
+
+Estado 15
+
+   10 exp: exp . '+' exp
+   11    | exp . '-' exp
+   12    | exp . '*' exp
+   13    | exp . '/' exp
+   14    | '-' exp .
+   15    | exp . '^' exp
+
+    '^'  desplazar e ir al estado 21
+
+    $default  reduce usando la regla 14 (exp)
+
+
+Estado 16
+
+   10 exp: exp . '+' exp
+   11    | exp . '-' exp
+   12    | exp . '*' exp
+   13    | exp . '/' exp
+   15    | exp . '^' exp
+   16    | '(' exp . ')'
+
+    '-'  desplazar e ir al estado 17
+    '+'  desplazar e ir al estado 18
+    '*'  desplazar e ir al estado 19
+    '/'  desplazar e ir al estado 20
+    '^'  desplazar e ir al estado 21
+    ')'  desplazar e ir al estado 25
+
+
+Estado 17
+
+   11 exp: exp '-' . exp
+
+    NUM   desplazar e ir al estado 4
+    VAR   desplazar e ir al estado 5
+    FNCT  desplazar e ir al estado 6
+    '-'   desplazar e ir al estado 7
+    '('   desplazar e ir al estado 9
+
+    exp  ir al estado 26
+
+
+Estado 18
+
+   10 exp: exp '+' . exp
+
+    NUM   desplazar e ir al estado 4
+    VAR   desplazar e ir al estado 5
+    FNCT  desplazar e ir al estado 6
+    '-'   desplazar e ir al estado 7
+    '('   desplazar e ir al estado 9
+
+    exp  ir al estado 27
+
+
+Estado 19
+
+   12 exp: exp '*' . exp
+
+    NUM   desplazar e ir al estado 4
+    VAR   desplazar e ir al estado 5
+    FNCT  desplazar e ir al estado 6
+    '-'   desplazar e ir al estado 7
+    '('   desplazar e ir al estado 9
+
+    exp  ir al estado 28
+
+
+Estado 20
+
+   13 exp: exp '/' . exp
+
+    NUM   desplazar e ir al estado 4
+    VAR   desplazar e ir al estado 5
+    FNCT  desplazar e ir al estado 6
+    '-'   desplazar e ir al estado 7
+    '('   desplazar e ir al estado 9
+
+    exp  ir al estado 29
+
+
+Estado 21
+
+   15 exp: exp '^' . exp
+
+    NUM   desplazar e ir al estado 4
+    VAR   desplazar e ir al estado 5
+    FNCT  desplazar e ir al estado 6
+    '-'   desplazar e ir al estado 7
+    '('   desplazar e ir al estado 9
+
+    exp  ir al estado 30
+
+
+Estado 22
+
+    4 line: exp '\n' .
+
+    $default  reduce usando la regla 4 (line)
+
+
+Estado 23
+
+    8 exp: VAR '=' exp .
+   10    | exp . '+' exp
+   11    | exp . '-' exp
+   12    | exp . '*' exp
+   13    | exp . '/' exp
+   15    | exp . '^' exp
+
+    '-'  desplazar e ir al estado 17
+    '+'  desplazar e ir al estado 18
+    '*'  desplazar e ir al estado 19
+    '/'  desplazar e ir al estado 20
+    '^'  desplazar e ir al estado 21
+
+    $default  reduce usando la regla 8 (exp)
+
+
+Estado 24
+
+    9 exp: FNCT '(' exp . ')'
+   10    | exp . '+' exp
+   11    | exp . '-' exp
+   12    | exp . '*' exp
+   13    | exp . '/' exp
+   15    | exp . '^' exp
+
+    '-'  desplazar e ir al estado 17
+    '+'  desplazar e ir al estado 18
+    '*'  desplazar e ir al estado 19
+    '/'  desplazar e ir al estado 20
+    '^'  desplazar e ir al estado 21
+    ')'  desplazar e ir al estado 31
+
+
+Estado 25
+
+   16 exp: '(' exp ')' .
+
+    $default  reduce usando la regla 16 (exp)
+
+
+Estado 26
+
+   10 exp: exp . '+' exp
+   11    | exp . '-' exp
+   11    | exp '-' exp .
+   12    | exp . '*' exp
+   13    | exp . '/' exp
+   15    | exp . '^' exp
+
+    '*'  desplazar e ir al estado 19
+    '/'  desplazar e ir al estado 20
+    '^'  desplazar e ir al estado 21
+
+    $default  reduce usando la regla 11 (exp)
+
+
+Estado 27
+
+   10 exp: exp . '+' exp
+   10    | exp '+' exp .
+   11    | exp . '-' exp
+   12    | exp . '*' exp
+   13    | exp . '/' exp
+   15    | exp . '^' exp
+
+    '*'  desplazar e ir al estado 19
+    '/'  desplazar e ir al estado 20
+    '^'  desplazar e ir al estado 21
+
+    $default  reduce usando la regla 10 (exp)
+
+
+Estado 28
+
+   10 exp: exp . '+' exp
+   11    | exp . '-' exp
+   12    | exp . '*' exp
+   12    | exp '*' exp .
+   13    | exp . '/' exp
+   15    | exp . '^' exp
+
+    '^'  desplazar e ir al estado 21
+
+    $default  reduce usando la regla 12 (exp)
+
+
+Estado 29
+
+   10 exp: exp . '+' exp
+   11    | exp . '-' exp
+   12    | exp . '*' exp
+   13    | exp . '/' exp
+   13    | exp '/' exp .
+   15    | exp . '^' exp
+
+    '^'  desplazar e ir al estado 21
+
+    $default  reduce usando la regla 13 (exp)
+
+
+Estado 30
+
+   10 exp: exp . '+' exp
+   11    | exp . '-' exp
+   12    | exp . '*' exp
+   13    | exp . '/' exp
+   15    | exp . '^' exp
+   15    | exp '^' exp .
+
+    '^'  desplazar e ir al estado 21
+
+    $default  reduce usando la regla 15 (exp)
+
+
+Estado 31
+
+    9 exp: FNCT '(' exp ')' .
+
+    $default  reduce usando la regla 9 (exp)
+>>>>>>> 1fefa2faf75679404a6666067bb0d3375d67c642
