@@ -1,0 +1,49 @@
+Estructura est 
+{
+Entero num;
+Entero nfgj;
+Booleano ggnum;
+} est1;
+ 
+Definir Constante Entero numero := 145 ;
+ 
+Funcion Entero miFuncion( Caracter Cadena; ) 
+ 
+   Car:=Carro;
+   Entero Num;
+ 
+   Mientras ( c<d )
+ 
+      Car:=Carro;
+      Entero bandera;
+      Booleano boole;
+      boole:=1;
+ 
+      Mientras ( a>=4 )
+ 
+         Car:=Carro;
+         Entero bandera;
+         Booleano boole;
+         boole:=1;
+ 
+  Para ( a:=14; a<=25; a:= + 5 4 ;(
+   
+   
+  Si ( a==4 ) Entonces
+    Bool:=1;
+     FinSi
+   
+  FinPara
+   
+ 
+      FinMientras
+ 
+   FinMientras
+ 
+   Si ( a==4 ) Entonces
+  Bool:=1;
+   FinSi
+ 
+   Retorna Numero 
+ 
+FinFuncion

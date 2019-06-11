@@ -1,0 +1,38 @@
+Definir Constante Entero numero := 145 ;
+Definir Booleano nume := 1 ;
+
+
+
+Funcion Entero ( Entero num; Real fre; Booleano boll;) 
+
+
+   Mientras (  )
+
+      
+      Booleano ghjfg;
+      bocfgh:=1;
+
+      Mientras ( a>=4 )
+
+         Car:=Carro;
+         Entero bandera;
+         Booleano boole;
+         boole:=1;
+	 		
+
+	Si ( a==4 ) 
+		 Bool:=1;
+		 Booleano boolean;
+	SinoSi (a==5) Entonces
+		Bool:=2;
+	Sino Entonces
+		Bool:=3;
+   	FinSi
+
+      FinMientras
+
+   FinMientras
+   
+   Retorna Carro
+
+FinFuncion
