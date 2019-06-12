@@ -1,0 +1,5 @@
+*.o
+**/lex.yy.*
+**/*.tab.*
+*.out
+*.output
