@@ -1,5 +1,2 @@
 # Compiladores-ISC
 Prácticas de Compiladores. Semestre 20192. ESCOM - IPN.
-
-### A los compañeros de ESCOM
-Mi profesor de Compiladores detectó que hubó un plagio de código del analizador léxico de mi práctica "mfcalc". Si bien mi código estuvo en un repositorio publico, el objetivo no era que sólo copiar y pegar o sólo descargaran el archivo. Como dice el profesor, debes enteder que hace el programa, así, al menos, puedes modificar un poco el archivo. Yo ni siquiera tenía conocimiento de que usaban mi archivo, por esa parte, quisiera deslindarme de cualquier responsabilidad porque yo pongo mi código aquí para que puedan ver que es lo que hago o comprender que era lo que tenía que hacerse, más no "fusilarse" el código. Hay que aprender a ser un poco autodidacta. Sin más por el momento, es todo lo que quería decir. 
